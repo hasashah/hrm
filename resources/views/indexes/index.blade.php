@@ -12,13 +12,5 @@
 
     </div>
 
-
-
-
-
 @endsection
 
-@section('footerscripts')
-    @parent
-
-@endsection

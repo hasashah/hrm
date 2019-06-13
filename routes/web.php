@@ -21,3 +21,9 @@ Route::get('/', function () {
 
 Route::resource('cellnumbers', 'cellnumbercontroller');
 Route::get('cellnumbers/{cellnumber}/delete', ['as' => 'cellnumbers.delete', 'uses' => 'CellnumberController@destroy']);
+Route::resource('employeedetails', 'EmployeedetailController');
+Route::get('/csvfile', 'CsvfileController@index');
+Route::get('uploadfile','HomeController@uploadfile');
+Route::post('uploadfile','HomeController@uploadFilePost');
+
+Route::resource('personals', 'PersonalController');

@@ -15,6 +15,7 @@ class CellnumberController extends Controller
      */
     public function index()
     {
+
         $cellnumbers=Cellnumber::all();
 
         return view('cellnumbers.index')->with('cellnumbers', $cellnumbers);
