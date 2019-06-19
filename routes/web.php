@@ -27,3 +27,6 @@ Route::get('uploadfile','HomeController@uploadfile');
 Route::post('uploadfile','HomeController@uploadFilePost');
 
 Route::resource('personals', 'PersonalController');
+
+Route::resource('sliders', 'SliderController');
+Route::resource('imagesliders', 'ImagesliderController');
