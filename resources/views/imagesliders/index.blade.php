@@ -51,7 +51,7 @@
                 <tr>
                     <th scope="row">{{ ++$i }}</th>
                     <td> <!--<a href="/cellnumbers/{{--$cellnumber->id--}}">--> {{ $slider->title }}<!--</a>--></td>
-                    <td><img src="{{url('images')}}/{{$slider->picture}}" alt="{{$slider->picture}}" width="200" height="200"></td>
+                    <td><img src="{{url('storage/picture')}}/{{$slider->picture}}" alt="{{$slider->picture}}" width="100" height="100"></td>
                     <td><a href="/imagesliders/{{$slider->id}}/edit"> EDIT </a> | <a href="{{ route('imagesliders.delete', $slider->id) }}" onclick="return confirm('Are You Sure to Delete this?')" >DELETE</a></td>
 
                 </tr>

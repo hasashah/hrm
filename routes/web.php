@@ -31,3 +31,4 @@ Route::resource('personals', 'PersonalController');
 Route::resource('sliders', 'SliderController');
 Route::resource('imagesliders', 'ImagesliderController');
 Route::get('imagesliders/{imageslider}/delete', ['as' => 'imagesliders.delete', 'uses' => 'ImagesliderController@destroy']);
+Route::get('/imageslider', 'ImagesliderController@imageSlider');

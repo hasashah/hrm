@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Imageslider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class ImagesliderController extends Controller
 {
@@ -51,8 +52,9 @@ class ImagesliderController extends Controller
         if ($request->hasFile('picture')) {
             $picture = $request->file('picture');
             $filename = 'slide' . '-' . time() . '.' . $picture->getClientOriginalExtension();
-            $location = public_path('images/');
-            $request->file('picture')->move($location, $filename);
+            $location = storage_path('app/public/picture/'.$filename);
+           // $request->file('picture')->move($location, $filename);
+            Image::make($picture)->resize(1000,500)->save($location);
 
             $slider->picture = $filename;
         }
@@ -95,7 +97,7 @@ class ImagesliderController extends Controller
     {
         $this->validate($request, array(
             'title'=>'required|max:225',
-            'picture'=>'required|image'
+            'picture'=>'image'
         ));
 
         $imageslider->title = $request->title;
@@ -103,8 +105,9 @@ class ImagesliderController extends Controller
         if ($request->hasFile('picture')) {
             $picture = $request->picture;
             $filename = 'slide' . '-' . time() . '.' . $picture->getClientOriginalExtension();
-            $location = public_path('images/');
-            $request->file('picture')->move($location, $filename);
+            $location = storage_path('app/public/picture/'.$filename);
+           // $request->file('picture')->move($location, $filename);
+            Image::make($picture)->resize(1000,500)->save($location);
 
             $oldFilename = $imageslider->picture;
             $imageslider->picture= $filename;
@@ -135,4 +138,14 @@ class ImagesliderController extends Controller
 
         return redirect('imagesliders')->withMessage('Image Deleted Successfully');
     }
+
+
+    public function imageSlider(){
+
+        $sliders=Imageslider::all();
+
+        return view('imagesliders.welcome', compact('sliders', $sliders));
+
+    }
+
 }
